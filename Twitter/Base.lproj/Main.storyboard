@@ -112,6 +112,7 @@
                                         <constraint firstItem="7uR-jY-4Ft" firstAttribute="bottom" secondItem="rdG-Q8-Uwd" secondAttribute="bottomMargin" id="zjk-zy-Rzg"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="profileImageView" destination="yiH-QO-Ld3" id="5Pu-Wf-Snt"/>
                                     <outlet property="tweetContent" destination="7uR-jY-4Ft" id="oEC-ny-J9Y"/>
