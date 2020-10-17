@@ -67,15 +67,21 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTweets()
+        self.loadTweets()
+        
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+//        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        self.navigationItem.rightBarButtonItem = self.editButtonItem
         myRefreshControl.addTarget(self, action: #selector(loadTweets), for: .valueChanged)
                 tableView.refreshControl = myRefreshControl
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadTweets()
     }
 
     
@@ -98,6 +104,12 @@ class HomeTableViewController: UITableViewController {
                     cell.profileImageView.image = UIImage(data: imageData)
                 }
         
+        cell.setFavortite(tweetArray[indexPath.row]["favorited"] as! Bool)
+        
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
+        
+        cell.setRetweeted(tweetArray[indexPath.row]["retweeted"] as! Bool)
+        
         return cell
     }
     
@@ -119,6 +131,16 @@ class HomeTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return tweetArray.count
     }
+    /* TIMESTUFF
+     func getRelativeTime(timeString: String) -> String{
+        let time: Date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
+        time = dateFormatter.date(from: timeString)!
+        return time.timeAgoDisplay()
+     }
+     
+     */
 
     
     /*
